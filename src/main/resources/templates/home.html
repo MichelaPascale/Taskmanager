@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>TaskManager</title>
+<link
+	href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-2" th:text=" 'Welcome, ' + ${user.firstName} + '!' "></h1>
+			<p class="lead">Here you can choose what you want to do!</p>
+		</div>
+	</div>
+	 
+	<h4>
+		<a class="btn btn-link btn-lg" href="/projects">MyProjects</a>
+	</h4>
+	<h4>
+		<a class="btn btn-link btn-lg" href="/projects/shared">Shared with me</a>
+	</h4>
+	<h4>
+		<a class="btn btn-link btn-lg" href="/projects/add">Create new Project</a>
+	</h4>
+	<h4>
+		<a class="btn btn-link btn-lg" href="/users/me">Profile</a>
+	</h4>
+	<h4>
+		<a class="btn btn-link btn-lg" href="/logout">Logout</a>
+	</h4>
+</body>
+</html>

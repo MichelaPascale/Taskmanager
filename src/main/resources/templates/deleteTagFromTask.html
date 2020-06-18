@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>TaskManager</title>
+<link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<form id="deleteTagForm"
+		th:action="@{|/projects/${projectId}/tasks/${taskId}/deleteTag/${tagId}|}"
+		method="POST">
+		<h1
+				th:text=" 'Are you sure you want to delete the tag ' + ${tag.name} + '?' "></h1>
+			<table>
+				<tr>
+					<td>
+						<button type="submit">Delete</button>
+					</td>
+				</tr>
+			</table>
+	</form>
+	<h4>
+		Back to <a href="/home">Home Page</a>
+	</h4>
+</body>
+</html>

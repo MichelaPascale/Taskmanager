@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>TaskManager</title>
+<link
+	href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>Assign Task to User</h1>
+			<p>Write the User's userName to whom you want to assign the task</p>
+		</div>
+	</div>
+
+	<form id="assignTaskToUserForm"
+		th:action="@{|/projects/${projectId}/tasks/${taskId}/assign|}"
+		th:object="${currentCredentials}" method="POST">
+
+		<div class="form-group col-md-6">
+			<label for="userNameInput">Username</label> 
+			<input id=userNameInput type="text"
+				class="form-control" placeholder="USERNAME" required 
+				th:field="*{userName}" />
+		</div>
+		
+		<div class="col-sm-10">
+			<button type="submit" class="btn btn-success btn-lg">Assign</button>
+		</div>
+	</form>
+	<br>
+	<div class="col-sm-10">
+		<h4>
+			Back to <a class="btn btn-info" href="/projects" role="button">Your projects</a>
+		</h4>
+	</div>
+	<div class="col-sm-10">
+		<h4>
+			Back to <a class="btn btn-info" href="/home" role="button">Home Page</a>
+		</h4>
+	</div>
+</body>
+</html>

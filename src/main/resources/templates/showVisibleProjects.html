@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>TaskManager</title>
+<link
+	href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>List of project that are shared with you</h1>
+			<h3>Click on it to see the details of each one</h3>
+		</div>
+	</div>
+	
+	<ul class="list-group">
+		<li th:each="project : ${visibleProjects}" class="list-group-item">
+			<div>
+				<a th:href="'/projects/' + ${project.id}" th:text="${project.name}">...</a>
+			</div>
+			<div
+				th:text="'Created by ' + ${project.owner.firstName} + ' ' + ${project.owner.lastName}"
+				th:style="'font-style:italic'">...</div>
+		</li>
+	</ul>
+
+	<div class="col-sm-10">
+		<h4>
+			Back to <a class="btn btn-primary" href="/home" role="button">Home page</a>
+		</h4>
+	</div>
+</body>
+</html>

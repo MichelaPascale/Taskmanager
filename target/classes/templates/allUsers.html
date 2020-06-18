@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>TaskManager</title>
+<link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<h1>All Users:</h1>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Delete</th>
+					<th>Projects</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="credential : ${allCredentials}">
+					<td th:text="${credential.userName}"></td>
+					<td th:text="${credential.user.firstName}"></td>
+					<td th:text="${credential.user.lastName}" style=""></td>
+					<td>
+						<form method="POST"
+							th:action="@{/admin/users/{username}/delete(username=${credential.userName})}">
+							<button type="submit" name="submit" value="value">Delete</button>
+						</form>
+					</td>
+					<td>
+					<td>
+						<form
+							th:action="@{/admin/users/{credentials}/projects(credentials=${credential.userName})}"
+							method="GET">
+							<button type="submit">Go to his Projects</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>TaskManager</title>
+<link
+	href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h2>Create New Project</h2>
+			<p>This is the page where you can create and choose a name for
+				your new project.</p>
+		</div>
+	</div>
+	<form id="createNewProjectForm" th:action="@{/projects/add}"
+		th:object="${project}" method="POST">
+
+		<div class="form-group col-md-6">
+			<label for="projectNameInput">Project Name</label> <input
+				id=projectNameInput type="text" class="form-control"
+				placeholder="NAME" required th:field="*{name}" /> <small
+				class="form-text text-muted" th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}" th:style="'color:red'"></small>
+		</div>
+		<br>
+		<div class="col-sm-10">
+			<button type="submit" class="btn btn-success btn-lg">Create</button>
+		</div>
+
+	</form>
+	<div class="col-sm-10">
+		<h4>
+			Back to <a class="btn btn-info" href="/home" role="button">Home
+				Page</a>
+		</h4>
+	</div>
+</body>
+</html>

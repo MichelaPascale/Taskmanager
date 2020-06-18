@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>TaskManager</title>
+<link
+	href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h2>Add a comment</h2>
+		</div>
+	</div>
+	<form id="commentForm"
+		th:action="@{|/projects/${projectId}/tasks/${taskId}/addComment|}"
+		th:object="${comment}" method="POST">
+
+		<div class="form-group col-md-6">
+			<label for="commentInput">Comment</label> <input id=commentInput
+				type="text" class="form-control" placeholder="NAME" required
+				th:field="*{comment}" /> <small class="form-text text-muted"
+				th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"
+				th:style="'color:red'"></small>
+		</div>
+		<div class="col-sm-10">
+			<button type="submit" class="btn btn-success btn-lg">Add</button>
+		</div>
+	</form>
+	<br>
+	<div class="col-sm-10">
+		<h4>
+			Back to <a class="btn btn-info" href="/projects" role="button">Your
+				Projects</a>
+		</h4>
+	</div>
+	<div class="col-sm-10">
+		<h4>
+			Back to <a class="btn btn-info" href="/home" role="button">Home
+				Page</a>
+		</h4>
+	</div>
+</body>
+</html>
